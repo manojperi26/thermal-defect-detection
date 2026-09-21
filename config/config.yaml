@@ -1,0 +1,46 @@
+data:
+  grid_shape: [64, 64]   # Surface resolution (H, W)
+  depth_layers: 10       # Z dimension
+  n_train_normal: 1000   # Full dataset
+  n_val_normal: 200
+  n_test_normal: 200
+  n_test_defective: 200
+  
+  physics:
+    base_temp_mean: 20.0
+    base_temp_std: 3.0
+    heat_intensity_mean: 20.0
+    heat_intensity_std: 5.0
+    beam_sigma_mean: 40.0
+    beam_sigma_std: 10.0
+    noise_std_mean: 0.1
+    noise_std_std: 0.05
+    
+    k_bg: 1.0       # Thermal conductivity of background
+    rhoc_bg: 1.0    # Volumetric heat capacity of background
+    k_defect: 0.05  # Low conductivity (e.g., air)
+    rhoc_defect: 0.05 # Low capacity (e.g., air)
+    
+    dt: 0.05
+    timesteps_heat: 60
+    timesteps_observe: 100 # Total steps before observation
+
+  seed: 42
+
+training:
+  batch_size: 32
+  learning_rate: 0.001
+  epochs: 100
+  patience: 10
+  aug_noise_std: 0.05
+
+paths:
+  train_normal: "data/train/normal"
+  val_normal: "data/val/normal"
+  test_normal: "data/test/normal"
+  test_defective: "data/test/defective"
+  masks: "data/test/masks"
+  metadata: "data/metadata"
+  figures: "results/figures"
+  metrics: "results/metrics"
+  models: "models"
