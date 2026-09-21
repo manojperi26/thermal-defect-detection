@@ -19,15 +19,15 @@ Active thermography is a non-destructive testing technique where a material is h
 ## Pipeline
 ```mermaid
 flowchart TD
-    A[Simulator: 3D FTCS Heat Diffusion] --> B[Normal Samples]
-    A --> C[Defective Samples]
-    B --> D[Train Conv Autoencoder]
-    C --> E[Inference]
+    A["Simulator: 3D FTCS Heat Diffusion"] --> B["Normal Samples"]
+    A --> C["Defective Samples"]
+    B --> D["Train Conv Autoencoder"]
+    C --> E["Inference"]
     D --> E
-    E --> F[Error Map = |Input - Recon|]
-    F --> G[Threshold (from Normal Val)]
-    G --> H[Detection & Localization]
-    H --> I[Evaluate vs Polynomial Baseline]
+    E --> F["Error Map = abs(Input - Reconstruction)"]
+    F --> G["Threshold (from Normal Val)"]
+    G --> H["Detection and Localization"]
+    H --> I["Evaluate vs Polynomial Baseline"]
 ```
 
 ## Synthetic Data
